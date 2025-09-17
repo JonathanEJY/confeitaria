@@ -2,7 +2,7 @@ import express from "express";
 import CreateUserController from "./controllers/user/CreateUserController";
 import CreateLaborController from "./controllers/user/CreateLaborController";
 import DeleteUserLaborController from "./controllers/user/DeleteUserLaborController";
-
+import UpdateLaborController from "./controllers/user/UpdateLaborController";
 const router = express.Router();
 
 // User
@@ -17,8 +17,8 @@ const createLaborController = new CreateLaborController();
 router.post("/user/labor", createLaborController.handle);
 
 // Update Labor
-//const updateLaborController = new UpdateLaborController()
-router.patch("/user/labor");
+const updateLaborController = new UpdateLaborController()
+router.patch("/user/labor", updateLaborController.handle);
 
 export default router;
 
