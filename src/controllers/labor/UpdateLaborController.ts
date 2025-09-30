@@ -1,4 +1,4 @@
-import UpdateLaborService from "../../services/user/UpdateLaborService";
+import UpdateLaborService from "../../services/labor/UpdateLaborService";
 
 import type { Request, Response } from "express";
 

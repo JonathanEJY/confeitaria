@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import CreateLaborService from "../../services/user/CreateLaborService";
+import CreateLaborService from "../../services/labor/CreateLaborService";
 import type { Labor } from "../../types";
 
 class CreateLaborController {

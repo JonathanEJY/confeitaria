@@ -1,6 +1,6 @@
 import prisma from "../../../prisma/client";
 
-class DeleteUserLaborModel {
+class DeleteUserModel {
   async deleteUser(Useruuid: string) {
     const deletedUser = await prisma.user.delete({
       where: {
@@ -11,4 +11,4 @@ class DeleteUserLaborModel {
   }
 }
 
-export default DeleteUserLaborModel;
+export default DeleteUserModel;

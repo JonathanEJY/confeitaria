@@ -1,5 +1,5 @@
 import type { Labor } from "../../types";
-import CreateLaborModel from "../../models/user/CreateLaborModel";
+import CreateLaborModel from "../../models/labor/CreateLaborModel";
 
 class CreateLaborService {
   async execute(labor: Labor) {

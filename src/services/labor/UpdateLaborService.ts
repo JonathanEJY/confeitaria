@@ -1,4 +1,4 @@
-import UpdateLaborModel from "../../models/user/UpdateLaborModel";
+import UpdateLaborModel from "../../models/labor/UpdateLaborModel";
 import type { Labor } from "../../types";
 
 class UpdateLaborService {
