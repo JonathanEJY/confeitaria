@@ -1,9 +1,9 @@
 import DeleteUserModel from "../../models/user/DeleteUserModel";
 
 class DeleteUserService {
-  async execute(Useruuid: string) {
+  async execute(userId: string) {
     const deleteUserModel = new DeleteUserModel();
-    const deletedUser = await deleteUserModel.deleteUser(Useruuid);
+    const deletedUser = await deleteUserModel.deleteUser(userId);
     return deletedUser;
   }
 }

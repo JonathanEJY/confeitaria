@@ -1,10 +1,17 @@
 import prisma from "../../../prisma/client";
 
 class DeleteUserModel {
-  async deleteUser(Useruuid: string) {
+  async deleteUser(userId: string) {
     const deletedUser = await prisma.user.delete({
       where: {
-        uuid: Useruuid,
+        uuid: userId,
+      },
+      select: {
+        uuid: true,
+        username: true,
+        email: true,
+        createdAt: true,
+        updatedAt: true,
       },
     });
     return deletedUser;
