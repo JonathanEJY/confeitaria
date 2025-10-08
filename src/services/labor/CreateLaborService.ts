@@ -4,6 +4,7 @@ import CreateLaborModel from "../../models/labor/CreateLaborModel";
 class CreateLaborService {
   async execute(labor: Labor) {
     const createLaborModel = new CreateLaborModel();
+    
     const newLabor = await createLaborModel.createLabor(labor);
     return newLabor;
   }

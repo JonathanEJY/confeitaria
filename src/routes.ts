@@ -2,6 +2,7 @@ import express from "express";
 import CreateUserController from "./controllers/user/CreateUserController";
 import CreateLaborController from "./controllers/labor/CreateLaborController";
 import GetUserController from "./controllers/user/GetUserController";
+import GetLaborController from "./controllers/labor/GetLaborController";
 import DeleteUserController from "./controllers/user/DeleteUserController";
 import DeleteLaborController from "./controllers/labor/DeleteLaborController";
 import UpdateUserController from "./controllers/user/UpdateUserController";
@@ -25,8 +26,8 @@ router.get("/users/:userId", getUserController.handle);
 const createLaborController = new CreateLaborController();
 router.post("/users/:userId/labor", createLaborController.handle);
 
-// const getLaborController = new GetLaborController();
-// router.get("/users/:userId/labor", getLaborController.handle);
+const getLaborController = new GetLaborController();
+router.get("/users/:userId/labor", getLaborController.handle);
 
 const deleteLaborController = new DeleteLaborController();
 router.delete("/users/:userId/labor", deleteLaborController.handle);
