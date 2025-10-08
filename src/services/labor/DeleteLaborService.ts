@@ -1,9 +1,9 @@
 import DeleteLaborModel from "../../models/labor/DeleteLaborModel";
 
 class DeleteLaborService {
-  async execute(laborId: string) {
+  async execute(userId: string) {
     const deleteLaborModel = new DeleteLaborModel();
-    const deletedLabor = await deleteLaborModel.deleteLabor(laborId);
+    const deletedLabor = await deleteLaborModel.deleteLabor(userId);
     return deletedLabor;
   }
 }
