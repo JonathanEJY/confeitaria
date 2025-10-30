@@ -20,3 +20,15 @@ export type Labor = {
 
   userId: string;
 };
+
+
+export type Product = {
+  name: string;
+  price: number;
+  quantity: number;
+  unit: Unit;
+  userId: string;
+  stockId: string;
+};
+
+export type Unit = "kg" | "g" | "L" | "ml" | "un";

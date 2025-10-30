@@ -25,6 +25,13 @@ model User {
 
   labor Labor? @relation
 
+  products Product[] @relation
+
+  // recipes Recipe[] @relation
+
+  //stockId String?
+  //stock   Stock?   @relation(fields: [stockId], references: [uuid], onDelete: Cascade)
+
   @@map("users")
 }
 
@@ -44,23 +51,69 @@ model Labor {
   user   User   @relation(fields: [userId], references: [uuid], onDelete: Cascade)
 }
 
-// model Ingredient {
-//   uuid             String   @id @default(uuid())
-//   id               Int      @default(autoincrement())
-//   name             String
-//   purchaseQuantity Float
-//   purchasePrice    Float
-//   unit             Unit
-//   createdAt        DateTime @default(now())
-//   updatedAt        DateTime @updatedAt
+enum Unit {
+  g
+  kg
+  ml
+  L
+  un
+}
 
-//   @@map("ingredients")
+model Product {
+  uuid      String   @id @default(uuid())
+  id        Int      @default(autoincrement())
+  name      String
+  quantity  Float 
+  price     Float
+  unit      Unit
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId String
+  user User @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+
+  stockId String
+  stock   Stock    @relation(fields: [stockId], references: [uuid], onDelete: Cascade)
+
+  @@map("products")
+}
+
+
+model Stock{
+  uuid     String   @id @default(uuid())
+  id       Int      @default(autoincrement())
+  name     String
+  quantity Float
+  unit     Unit
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  
+  // userId String
+  // user User @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  product Product[]
+
+  @@map("stocks")
+}
+
+// model Recipe {
+//   uuid      String   @id @default(uuid())
+//   id        Int      @default(autoincrement())
+//   name      String
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+
+//   userId String
+//   user User @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+
+//   products Product[]
+
+//   @@map("recipes")
 // }
 
-// enum Unit {
-//   g
-//   kg
-//   ml
-//   L
-//   un
+
+
+// model StockProduct{
+//   uuid  String @id @default(uuid())
+  
 // }
