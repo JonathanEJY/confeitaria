@@ -27,10 +27,7 @@ model User {
 
   products Product[] @relation
 
-  // recipes Recipe[] @relation
-
-  //stockId String?
-  //stock   Stock?   @relation(fields: [stockId], references: [uuid], onDelete: Cascade)
+  stock Stock? @relation
 
   @@map("users")
 }
@@ -63,34 +60,32 @@ model Product {
   uuid      String   @id @default(uuid())
   id        Int      @default(autoincrement())
   name      String
-  quantity  Float 
+  quantity  Float
   price     Float
   unit      Unit
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
   userId String
-  user User @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  user   User   @relation(fields: [userId], references: [uuid], onDelete: Cascade)
 
   stockId String
-  stock   Stock    @relation(fields: [stockId], references: [uuid], onDelete: Cascade)
+  stock   Stock  @relation(fields: [stockId], references: [uuid], onDelete: Cascade)
 
   @@map("products")
 }
 
-
-model Stock{
-  uuid     String   @id @default(uuid())
-  id       Int      @default(autoincrement())
-  name     String
-  quantity Float
-  unit     Unit
+model Stock {
+  uuid      String   @id @default(uuid())
+  id        Int      @default(autoincrement())
+  name      String
+  quantity  Float
+  unit      Unit
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  
-  // userId String
-  // user User @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  user    User?     @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  userId  String?   @unique
   product Product[]
 
   @@map("stocks")
@@ -111,9 +106,7 @@ model Stock{
 //   @@map("recipes")
 // }
 
-
-
 // model StockProduct{
 //   uuid  String @id @default(uuid())
-  
+
 // }
