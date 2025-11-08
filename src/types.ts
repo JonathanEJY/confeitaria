@@ -35,10 +35,10 @@ export type Product = {
 
 export type Stock = {
   name: string;
-  quantity: number;
-  unit: Unit;
   userId: string;
-  products?: Product[];
 };
 
 export type Unit = "kg" | "g" | "L" | "ml" | "un";
+
+
+

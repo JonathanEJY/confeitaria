@@ -3,10 +3,13 @@ import GetLaborService from "../../services/labor/GetLaborService";
 
 class GetLaborController {
   async handle(req: Request, res: Response) {
+    console.log('teste')
+    const userId = req.user!.uuid;
+    console.log("Authenticated user ID:", userId);
     if (!req.params.userId) {
       return res.status(400).json({ error: "User ID is required" });
     }
-    const userId = req.params.userId;
+    
     const getLaborService = new GetLaborService();
     try {
       const laborId = await getLaborService.execute(userId);

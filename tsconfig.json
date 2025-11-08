@@ -4,7 +4,11 @@
     // File Layout
     // "rootDir": "./src",
     // "outDir": "./dist",
-
+        "typeRoots": ["./node_modules/@types", "./src/@types"],
+    "baseUrl": "./src",
+    "paths": {
+      "*": ["*"]
+    },
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
     "module": "commonjs",
@@ -43,5 +47,6 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node"
-  }
+  },
+  "include": ["src/**/*"]
 }

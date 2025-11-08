@@ -6,8 +6,7 @@ class CreateStockModel {
     const stock = await prisma.stock.create({
       data: {
         name: data.name,
-        quantity: data.quantity,
-        unit: data.unit,
+        userId: data.userId,
       },
     });
 

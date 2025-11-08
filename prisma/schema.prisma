@@ -60,33 +60,60 @@ model Product {
   uuid      String   @id @default(uuid())
   id        Int      @default(autoincrement())
   name      String
-  quantity  Float
-  price     Float
   unit      Unit
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  // cadê a quantidade do protudo, tipo quantas gramas tem etc
+
   userId String
   user   User   @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+
+  stockId String?
+  stock   Stock?  @relation(fields: [stockId], references: [uuid], onDelete: Cascade)
+
+  stockProducts StockProduct[]
+
+  @@map("products")
+}
+
+model StockProduct {
+  uuid      String    @id @default(uuid())
+  quantity  Decimal   @default(0) @db.Decimal(9, 2)
+  lot       String?
+  expiresAt DateTime?
+  costPrice Decimal   @db.Decimal(9, 2)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // cadê a quantidade do protudo, tipo quantas gramas tem etc
+
+  productId String
+  product   Product @relation(fields: [productId], references: [uuid], onDelete: Cascade)
 
   stockId String
   stock   Stock  @relation(fields: [stockId], references: [uuid], onDelete: Cascade)
 
-  @@map("products")
+  //movements StockMovement[]
+
+  @@index([productId])
+  @@index([stockId])
+  @@map("stock_products")
 }
 
 model Stock {
   uuid      String   @id @default(uuid())
   id        Int      @default(autoincrement())
   name      String
-  quantity  Float
-  unit      Unit
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  user    User?     @relation(fields: [userId], references: [uuid], onDelete: Cascade)
-  userId  String?   @unique
-  product Product[]
+  user   User   @relation(fields: [userId], references: [uuid], onDelete: Cascade)
+  userId String @unique
+
+  products Product[]
+
+  stockProducts StockProduct[]
 
   @@map("stocks")
 }
@@ -104,9 +131,4 @@ model Stock {
 //   products Product[]
 
 //   @@map("recipes")
-// }
-
-// model StockProduct{
-//   uuid  String @id @default(uuid())
-
 // }
