@@ -3,13 +3,12 @@ import GetLaborService from "../../services/labor/GetLaborService";
 
 class GetLaborController {
   async handle(req: Request, res: Response) {
-    console.log('teste')
     const userId = req.user!.uuid;
-    console.log("Authenticated user ID:", userId);
-    if (!req.params.userId) {
+
+    if (!userId) {
       return res.status(400).json({ error: "User ID is required" });
     }
-    
+
     const getLaborService = new GetLaborService();
     try {
       const laborId = await getLaborService.execute(userId);
@@ -21,5 +20,5 @@ class GetLaborController {
       res.status(500).json({ error: "Internal server error" });
     }
   }
-} 
+}
 export default GetLaborController;

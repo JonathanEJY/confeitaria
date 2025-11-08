@@ -9,9 +9,10 @@ import DeleteLaborController from "./controllers/labor/DeleteLaborController";
 import UpdateUserController from "./controllers/user/UpdateUserController";
 import UpdateLaborController from "./controllers/labor/UpdateLaborController";
 
-import {authMiddleware} from "./middleware/authMiddleware";
+import { authMiddleware } from "./middleware/authMiddleware";
 
 const router = express.Router();
+const getLaborController = new GetLaborController();
 
 // User
 const loginUserController = new LoginUserController();
@@ -27,20 +28,27 @@ const updateUserController = new UpdateUserController();
 router.patch("/users/:userId", authMiddleware, updateUserController.handle);
 
 const getUserController = new GetUserController();
-router.get("/users/:userId", authMiddleware, getUserController.handle);
+router.get("/users/", authMiddleware, getUserController.handle);
 
 // Labor
 const createLaborController = new CreateLaborController();
-router.post("/users/:userId/labor", authMiddleware, createLaborController.handle);
-
-const getLaborController = new GetLaborController();
-router.get("/users/labor", authMiddleware, getLaborController.handle);
+router.post("/users/labor", authMiddleware, createLaborController.handle);
 
 const deleteLaborController = new DeleteLaborController();
-router.delete("/users/:userId/labor", authMiddleware, deleteLaborController.handle);
+router.delete(
+  "/users/:userId/labor",
+  authMiddleware,
+  deleteLaborController.handle
+);
 
-const updateLaborController = new UpdateLaborController()
-router.patch("/users/:userId/labor", authMiddleware, updateLaborController.handle);
+router.get("/users/labor", authMiddleware, getLaborController.handle); // feito
+
+const updateLaborController = new UpdateLaborController();
+router.patch(
+  "/users/:userId/labor",
+  authMiddleware,
+  updateLaborController.handle
+);
 
 export default router;
 
