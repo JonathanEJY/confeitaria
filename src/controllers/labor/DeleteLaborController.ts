@@ -4,7 +4,7 @@ import { Request, Response } from "express";
 
 class DeleteLaborController {
   async handle(req: Request, res: Response) {
-    const userId = req.params.userId;
+    const userId = req.user!.uuid;
     if (!userId) {
       return res.status(400).json({ error: "User ID is required" });
     }

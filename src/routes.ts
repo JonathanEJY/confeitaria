@@ -22,35 +22,24 @@ const createUserController = new CreateUserController();
 router.post("/users", createUserController.handle);
 
 const deleteUserController = new DeleteUserController();
-router.delete("/users/:userId", authMiddleware, deleteUserController.handle);
+router.delete("/users", authMiddleware, deleteUserController.handle);
 
 const updateUserController = new UpdateUserController();
-router.patch("/users/:userId", authMiddleware, updateUserController.handle);
+router.patch("/users", authMiddleware, updateUserController.handle);
 
 const getUserController = new GetUserController();
-router.get("/users/", authMiddleware, getUserController.handle);
+router.get("/users", authMiddleware, getUserController.handle);
 
 // Labor
 const createLaborController = new CreateLaborController();
 router.post("/users/labor", authMiddleware, createLaborController.handle);
 
 const deleteLaborController = new DeleteLaborController();
-router.delete(
-  "/users/:userId/labor",
-  authMiddleware,
-  deleteLaborController.handle
-);
+router.delete("/users/labor", authMiddleware, deleteLaborController.handle);
 
 router.get("/users/labor", authMiddleware, getLaborController.handle); // feito
 
 const updateLaborController = new UpdateLaborController();
-router.patch(
-  "/users/:userId/labor",
-  authMiddleware,
-  updateLaborController.handle
-);
+router.patch("/users/labor", authMiddleware, updateLaborController.handle);
 
 export default router;
-
-// TODO: update labor
-// TODO: Login user and persist user data on JWT usind a middleware

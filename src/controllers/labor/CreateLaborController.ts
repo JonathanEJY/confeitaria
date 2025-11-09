@@ -4,11 +4,12 @@ import type { Labor } from "../../types";
 
 class CreateLaborController {
   async handle(req: Request, res: Response) {
+    const userId = req.user!.uuid;
     const labor: Labor = req.body;
-    if (!req.params.userId) {
+    if (!userId) {
       return res.status(400).json({ error: "User ID is required" });
     }
-    labor.userId = req.params.userId;
+    labor.userId = userId;
     const createLaborService = new CreateLaborService();
     try {
       const newLabor = await createLaborService.execute(labor);

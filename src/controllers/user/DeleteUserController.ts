@@ -3,7 +3,7 @@ import DeleteUserService from "../../services/user/DeleteUserService";
 
 class DeleteUserController {
   async handle(req: Request, res: Response) {
-    const { userId } = req.params;
+    const userId = req.user!.uuid
     if (!userId) {
       return res.status(400).json({ error: "User ID is required" });
     }
