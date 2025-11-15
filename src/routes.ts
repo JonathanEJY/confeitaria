@@ -8,6 +8,7 @@ import DeleteUserController from "./controllers/user/DeleteUserController";
 import DeleteLaborController from "./controllers/labor/DeleteLaborController";
 import UpdateUserController from "./controllers/user/UpdateUserController";
 import UpdateLaborController from "./controllers/labor/UpdateLaborController";
+import CreateStockController from "./controllers/stock/CreateStockController";
 
 import { authMiddleware } from "./middleware/authMiddleware";
 
@@ -41,5 +42,9 @@ router.get("/users/labor", authMiddleware, getLaborController.handle); // feito
 
 const updateLaborController = new UpdateLaborController();
 router.patch("/users/labor", authMiddleware, updateLaborController.handle);
+
+// Stock
+const createStockController = new CreateStockController();
+router.post("/users/stock", authMiddleware, createStockController.handle);
 
 export default router;
