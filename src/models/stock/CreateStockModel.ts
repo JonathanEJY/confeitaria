@@ -2,7 +2,7 @@ import prisma from "../../../prisma/client";
 import type { Stock } from "../../types";
 
 class CreateStockModel {
-  async execute(data: Stock) {
+  async createStock(data: Stock) {
     const stock = await prisma.stock.create({
       data: {
         name: data.name,
