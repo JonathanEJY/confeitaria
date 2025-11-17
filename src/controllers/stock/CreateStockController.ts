@@ -19,7 +19,7 @@ class CreateStockController {
     };
     const createStockService = new CreateStockService();
     const newStock = await createStockService.execute(dataStock);
-    return res.json(newStock);
+    return res.status(201).json(newStock);
   }
 }
 

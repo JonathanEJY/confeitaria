@@ -4,8 +4,6 @@ export type User = {
   username: string;
   email: string;
   passwordHash: string;
-
-  // labor: Labor | undefined;
 };
 
 export type Labor = {
@@ -21,7 +19,6 @@ export type Labor = {
   userId: string;
 };
 
-
 export type Product = {
   name: string;
   price: number;
@@ -31,14 +28,9 @@ export type Product = {
   stockId: string;
 };
 
-
-
 export type Stock = {
   name: string;
   userId: string;
 };
 
 export type Unit = "kg" | "g" | "L" | "ml" | "un";
-
-
-
