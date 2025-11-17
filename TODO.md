@@ -4,5 +4,6 @@ TODO: Criar uma entidade de Produtos para vender (talvez mudar o "produto" atual
 
 TODO: corrigir o res.json que a IA fez
 
-
 8d018db5-5b48-43de-bcdf-ebae91023514
+
+uuiv7
