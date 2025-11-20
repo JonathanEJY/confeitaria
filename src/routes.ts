@@ -9,6 +9,7 @@ import DeleteLaborController from "./controllers/labor/DeleteLaborController";
 import UpdateUserController from "./controllers/user/UpdateUserController";
 import UpdateLaborController from "./controllers/labor/UpdateLaborController";
 import CreateStockController from "./controllers/stock/CreateStockController";
+import UpdateStockController from "./controllers/stock/UpdateStockController";
 
 import { authMiddleware } from "./middleware/authMiddleware";
 
@@ -46,5 +47,8 @@ router.patch("/users/labor", authMiddleware, updateLaborController.handle);
 // Stock
 const createStockController = new CreateStockController();
 router.post("/users/stock", authMiddleware, createStockController.handle);
+
+const updateStockController = new UpdateStockController();
+router.patch("/users/stock", authMiddleware, updateStockController.handle);
 
 export default router;

@@ -2,17 +2,19 @@ import prisma from "../../../prisma/client";
 import type { Stock } from "../../types";
 
 class UpdateStockModel {
-  async updateStock(stockId: string, newStock: Stock) {
+  async updateStock(dataStock: Stock) {
     try {
       const updatedStock = await prisma.stock.update({
         where: { uuid: stockId },
         data: {
-          name: newStock.name,
+          name: dataStock.name,
         },
       });
       return updatedStock;
     } catch (error) {
-      throw new Error(`Failed to update stock with ID ${stockId}: ${error}`);
+      throw new Error(
+        `Failed to update stock with ID ${dataStock.uuid}: ${error}`
+      );
     }
   }
 }
